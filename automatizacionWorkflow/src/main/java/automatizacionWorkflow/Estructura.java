@@ -27,7 +27,7 @@ public class Estructura extends Base {
 	By bb= By.xpath("//div/label/span");
 	By Fi = By.name("fechaInicio");
 	By Ff= By.name("fechaFin");
-	int f;
+	int f,x;
 
 	public Estructura(WebDriver driver) {
 		super(driver);
@@ -69,11 +69,7 @@ public class Estructura extends Base {
 			elemento.click();
 			Thread.sleep(1000);
 			lista=elemento.findElements(By.tagName("option"));
-			for (int i = 0; i < lista.size(); i++) {
-				if(lista.get(i).getText().equals("asd")){
-					lista.get(i).click();
-				}
-			}
+			
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(1000);

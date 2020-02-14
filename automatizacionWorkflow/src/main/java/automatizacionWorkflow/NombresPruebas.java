@@ -50,7 +50,5 @@ public class NombresPruebas {
 		return grupos;
 	}
 
-	public String[][] setEstructura() {
-		return estructuras;
-	}
+
 }
