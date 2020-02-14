@@ -127,7 +127,6 @@ public class Grupo extends Base {
 			Thread.sleep(1000);
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][0])) {
 					
 					Thread.sleep(1000);
@@ -200,7 +199,6 @@ public void EliminarGrupos(int f) throws InterruptedException {
 		Thread.sleep(1000);
 		lista = driver.findElements(By.xpath("//tbody/tr"));
 		for (int i = 1; i < lista.size()+1; i++) {
-			System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 			if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo1][0])) {
 				
 				Thread.sleep(1000);
