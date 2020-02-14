@@ -235,6 +235,7 @@ public class Partner extends Base {
 		
 	}//---------------eliminar partner-------------------
 public void actualizarpartner(int f) throws InterruptedException{
+	Thread.sleep(2000);
 	switch (f) {
 	case 1:
 		click(ciudadano);
