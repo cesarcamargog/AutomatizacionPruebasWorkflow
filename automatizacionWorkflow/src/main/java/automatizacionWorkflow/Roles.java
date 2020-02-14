@@ -17,7 +17,7 @@ By prueba = By.xpath("//*[@value='1']");
 By guardar = By.xpath("//div[3]/button[2]");
 By ok = By.xpath("//div[3]/button[1]");
 By localizador = By.xpath("//div/div/div[1]/h3");
-By verEliminado = By.id("swal2-content");
+By check= By.id("swal2-content");
 String k;
 Random d;
 int x;
@@ -48,7 +48,11 @@ int x;
 	Thread.sleep(1000);
 	click(guardar);
 	Thread.sleep(1000);
-	click(ok);
+	if(getText(check).equals("Rol Guardado Correctamente")) {
+		click(ok);
+		System.out.println("Se guardo correctamente");
+		
+	}
 	
 	}
 
@@ -67,8 +71,8 @@ int x;
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(2000);
-			k = getText(verEliminado);
-			if(k.equals("Rol Guardado Correctamente")) {
+
+			if(getText(check).equals("Rol Guardado Correctamente")) {
 				click(ok);
 				System.out.println("Se actualizo correctamente");
 				
@@ -88,7 +92,12 @@ int x;
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr["+i+"]/td[4]/button")).click();
 					Thread.sleep(1000);
-					click(ok);
+				
+					if(getText(check).equals("Rol ELIMINADO Correctamente")) {
+						click(ok);
+						System.out.println("Se actualizo correctamente");
+						
+					}
 				}
 				
 			}

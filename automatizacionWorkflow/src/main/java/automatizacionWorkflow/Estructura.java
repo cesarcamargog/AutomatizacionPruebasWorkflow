@@ -27,6 +27,7 @@ public class Estructura extends Base {
 	By bb= By.xpath("//div/label/span");
 	By Fi = By.name("fechaInicio");
 	By Ff= By.name("fechaFin");
+	By check = By.id("swal2-content");
 	int f,x;
 
 	public Estructura(WebDriver driver) {
@@ -59,6 +60,7 @@ public class Estructura extends Base {
 		Thread.sleep(1000);
 		switch (h) {
 		case 1:
+			Thread.sleep(1000);
 			click(EG);
 			Thread.sleep(1000);
 			click(ne);
@@ -69,11 +71,19 @@ public class Estructura extends Base {
 			elemento.click();
 			Thread.sleep(1000);
 			lista=elemento.findElements(By.tagName("option"));
-			
+			for (int i = 0; i < lista.size(); i++) {
+				if(lista.get(i).getText().equals("asd")){
+					lista.get(i).click();
+				}
+			}
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(1000);
-			click(ok);
+			if(getText(check).equals("Estructra Grupo agregada correctamente")) {
+				click(ok);
+				Thread.sleep(2000);
+			}
+		
 			break;
 			//<----------------------------------------------------------------->
 		case 2:
@@ -104,11 +114,14 @@ public class Estructura extends Base {
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(1000);
-			click(ok);
-			
+			if(getText(check).equals("Estructura Puesto agregada correctamente")) {
+				click(ok);
+				Thread.sleep(2000);
+			}
 			break;
 			//<------------------------------------------------------------------->
 		case 3:
+			Thread.sleep(1000);
 			click(ED);
 			Thread.sleep(1000);
 			click(ne);
@@ -127,10 +140,14 @@ public class Estructura extends Base {
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(1000);
-			click(ok);
+			if(getText(check).equals("Estructura Departamento agregada correctamente")) {
+				click(ok);
+				Thread.sleep(2000);
+			}
 			break;
 			//<---------------------------------------------------------------->
 		case 4:
+			Thread.sleep(1000);
 			click(Epos);
 			Thread.sleep(1000);
 			click(ne);
@@ -179,10 +196,14 @@ public class Estructura extends Base {
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(1000);
-			click(ok);
+			if(getText(check).equals("Estructura Posicion agregada correctamente")) {
+				click(ok);
+				Thread.sleep(2000);
+			}
 			break;
 			//<---------------------------------------------------------------------->
 		case 5:
+			Thread.sleep(1000);
 			click(EA);
 			Thread.sleep(1000);
 			click(ne);
@@ -217,7 +238,10 @@ public class Estructura extends Base {
 			Thread.sleep(1000);
 			click(guardar);
 			Thread.sleep(1000);
-			click(ok);
+			if(getText(check).equals("Estructura Asignacion agregada correctamente")) {
+				click(ok);
+				Thread.sleep(2000);
+			}
 			break;
 		}
 	}
@@ -225,6 +249,7 @@ public class Estructura extends Base {
 	public void Actualizar(int h) throws InterruptedException {
 		switch(h) {
 		case 1:
+			Thread.sleep(1000);
 			click(EG);
 			Thread.sleep(1000);
 			  do {
@@ -255,6 +280,7 @@ public class Estructura extends Base {
 			break;
 			//<-------------------------------------------------------->
 		case 2:
+			Thread.sleep(1000);
 			click(Ep);
 			Thread.sleep(1000);
 			lista = driver.findElements(By.xpath("//tbody/tr"));
@@ -285,6 +311,7 @@ public class Estructura extends Base {
 			break;
 			//<----------------------------------------------------------->
 		case 3:
+			Thread.sleep(1000);
 			click(ED);
 			Thread.sleep(1000);
 			do {
@@ -314,6 +341,7 @@ public class Estructura extends Base {
 			break;
 			//<--------------------------------------------------------->
 		case 4:
+			Thread.sleep(1000);
 			click(Epos);
 			Thread.sleep(1000);
 			do {
@@ -342,7 +370,9 @@ public class Estructura extends Base {
 		}while(f!=1);
 			break;
 			//<--------------------------------------------------------->
-		case 5:	click(EA);
+		case 5:
+			Thread.sleep(1000);
+			click(EA);
 		Thread.sleep(1000);
 		do {
 		lista = driver.findElements(By.xpath("//tbody/tr"));

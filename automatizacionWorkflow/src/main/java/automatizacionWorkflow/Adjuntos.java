@@ -53,9 +53,8 @@ public class Adjuntos extends Base {
 		do {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size() + 1; i++) {
-				Thread.sleep(1000);
 				f = driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[1]")).getText();
-				System.out.println(f);
+		
 				if (f.equals("nombre prueba")) {
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[4]//button")).click();
 					Thread.sleep(1000);

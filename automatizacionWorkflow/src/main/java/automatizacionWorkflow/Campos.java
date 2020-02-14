@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Campos extends Base{
+public class Campos extends Base {
 	WebElement elemento;
 	List<WebElement> lista;
 	By campo = By.linkText("Campos");
@@ -23,33 +23,40 @@ public class Campos extends Base{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
+
 	public void nuevoCampo() throws InterruptedException {
 		Thread.sleep(1000);
 		click(campo);
 		Thread.sleep(1000);
 		click(NC);
 		Thread.sleep(1000);
-	type("nombre prueba", nombre);
-	Thread.sleep(1000);
-	type("nombre_p", id);
-	elemento = driver.findElement(tipo);
-	lista= elemento.findElements(By.tagName("option"));
-	for (int i = 0; i < lista.size(); i++) {
-		if(lista.get(i).getText().equals("TEXT BOX")) {
-			lista.get(i).click();
+		type("nombre prueba", nombre);
+		Thread.sleep(1000);
+		type("nombre_p", id);
+		elemento = driver.findElement(tipo);
+		lista = elemento.findElements(By.tagName("option"));
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getText().equals("TEXT BOX")) {
+				lista.get(i).click();
+			}
 		}
-	}
-	Thread.sleep(1000);
-	click(guardar);
-	
-	
+		Thread.sleep(1000);
+		click(guardar);
+
 		click(ok);
 		System.out.println("Se elimino correctamente");
-	
-	
+
 	}
-	public void actualizarCampo() {
-		
+
+	public void actualizarCampo() throws InterruptedException {
+		Thread.sleep(1000);
+		click(campo);
+		Thread.sleep(1000);
+		click(guardar);
+
+		click(ok);
+		System.out.println("Se elimino correctamente");
+
 	}
 
 }

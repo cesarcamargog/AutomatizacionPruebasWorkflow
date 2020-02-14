@@ -23,6 +23,7 @@ public class Grupo extends Base {
 	By RS = By.name("razonSocial");
 	By GS = By.xpath("//*[@id=\"ulSidebar\"]/li[4]/ul/li[2]/a/span");
 	By SelectG = By.name("grupo");
+	String r;
 
 	int grupo, grupo1;
 	NombresPruebas gp;
@@ -70,6 +71,7 @@ public class Grupo extends Base {
 			click(NG);
 			Thread.sleep(1000);
 			type(grupos[grupo][0], nombre);
+			r="grupo";
 			break;
 		case 2:
 			click(GE);
@@ -91,7 +93,7 @@ public class Grupo extends Base {
 
 				}
 			}
-			System.out.println(getText(SelectG));
+			r="grupo empresa";
 			break;
 		case 3:
 			click(GS);
@@ -110,12 +112,13 @@ public class Grupo extends Base {
 			}
 		
 			Thread.sleep(1000);
+			r="grupo Sucursal";
 			break;
 		}
 		click(guardar);
 		Thread.sleep(2000);
 		click(ok);
-		System.out.println("se ingreso correctamente");
+		System.out.println("se ingreso correctamente el "+r);
 	}
 
 	public void actualizarGrupos(int f) throws InterruptedException {
@@ -205,7 +208,7 @@ public void EliminarGrupos(int f) throws InterruptedException {
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[4]/button")).click();
 				Thread.sleep(1000);
 				click(ok);
-				System.out.println("se actualizo correctamente el grupo");
+				System.out.println("se elimino correctamente el grupo");
 			}
 		}
 		break;
@@ -219,7 +222,7 @@ public void EliminarGrupos(int f) throws InterruptedException {
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[7]/button")).click();
 				Thread.sleep(1000);
 				click(ok);
-				System.out.println("se actualizo correctamente el grupo Empresa");
+				System.out.println("se elimino correctamente el grupo Empresa");
 			}
 		}
 		break;
@@ -233,7 +236,7 @@ public void EliminarGrupos(int f) throws InterruptedException {
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
 				Thread.sleep(1000);
 				click(ok);
-				System.out.println("se actualizo correctamente el grupo Sucursal");
+				System.out.println("se elimino correctamente el grupo Sucursal");
 			}
 		}
 		break;

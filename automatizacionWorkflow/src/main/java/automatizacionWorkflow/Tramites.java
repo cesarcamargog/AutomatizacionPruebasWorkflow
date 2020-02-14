@@ -53,7 +53,6 @@ public class Tramites extends Base {
 					Thread.sleep(2000);
 					click(ok);
 					Thread.sleep(1000);
-					llenarTramite();
 					fol =getText(folio);
 					Thread.sleep(1000);
 					type("xxx", N);
@@ -73,7 +72,7 @@ public class Tramites extends Base {
 					type("C:\\Users\\Desarrollo\\Desktop\\PagoPredial.pdf", predio);
 					Thread.sleep(1000);
 					click(siguiente);
-					Thread.sleep(1000);
+					Thread.sleep(2000);
 					type("C:\\Users\\Desarrollo\\Desktop\\escrituraRegistrada.pdf", escritura);
 					Thread.sleep(2000);
 					type("C:\\Users\\Desarrollo\\Desktop\\PagoPredial.pdf", predio);
@@ -91,7 +90,4 @@ public class Tramites extends Base {
 
 	}
 
-	public void llenarTramite() throws InterruptedException {
-		
-	}
 }
