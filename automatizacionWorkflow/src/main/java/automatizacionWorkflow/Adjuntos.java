@@ -92,7 +92,6 @@ do {
 	for (int i = 1; i < lista.size() + 1; i++) {
 		Thread.sleep(1000);
 		f = driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[1]")).getText();
-		System.out.println(f);
 		if (f.equals("Cambio de nombre")) {
 			driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/div/div/button")).click();
 			Thread.sleep(1000);

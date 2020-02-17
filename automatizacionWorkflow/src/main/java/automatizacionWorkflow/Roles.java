@@ -37,7 +37,6 @@ int x;
 		
 		d = new Random();
 		x=d.nextInt(32);
-		System.out.println(x);
 		if (x==19|| x==14) {
 			
 			break;
@@ -61,7 +60,6 @@ int x;
 
 	lista = driver.findElements(By.xpath("//tbody/tr"));
 	for (int i = 1; i <lista.size()+1; i++) {
-		System.out.println(driver.findElement(By.xpath("//tbody/tr["+i+"]/td[2]")).getText());
 		if (driver.findElement(By.xpath("//tbody/tr["+i+"]/td[2]")).getText().equals("x")) {
 			Thread.sleep(1000);
 			driver.findElement(By.xpath("//tbody/tr["+i+"]/td[3]/button")).click();
@@ -87,7 +85,6 @@ int x;
 		try {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i <lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr["+i+"]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr["+i+"]/td[2]")).getText().equals("s")) {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr["+i+"]/td[4]/button")).click();

@@ -14,6 +14,7 @@ public class dependencia extends Base{
 	By descrip = By.name("descripcion");
 	By guardar = By.xpath("//div[2]/div/button");
 	By ok = By.xpath("//div[3]/button[1]");
+	By check = By.id("swal2-content");
 	int f;
 	
 	
@@ -80,8 +81,11 @@ public class dependencia extends Base{
 				Thread.sleep(1000);
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/div/div/button")).click();
 				Thread.sleep(1000);
-				click(ok);
-				System.out.println("se actualizo correctamente el grupo");
+				if (getText(check).equals("Dependencia actualizada correctamente")) {
+					click(ok);
+					System.out.println("se actualizo correctamente el grupo");
+				}
+				
 				f=1;
 			}
 		}

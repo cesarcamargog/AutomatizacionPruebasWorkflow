@@ -255,7 +255,7 @@ public class Estructura extends Base {
 			  do {
 				lista = driver.findElements(By.xpath("//tbody/tr"));
 				for (int i = 1; i < lista.size()+1; i++) {
-					System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+				//	System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 					if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("xxx")) {
 						
 						Thread.sleep(1000);
@@ -268,7 +268,7 @@ public class Estructura extends Base {
 						click(guardar);
 						Thread.sleep(2000);
 						click(ok);
-						System.out.println("se actualizo correctamente el grupo");
+						System.out.println("se actualizo correctamente la estructura de grupo");
 						f=1;
 					}
 				}
@@ -286,7 +286,7 @@ public class Estructura extends Base {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			do {
 				for (int i = 1; i < lista.size()+1; i++) {
-					System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+					//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 					if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("sss")) {
 						
 						Thread.sleep(1000);
@@ -299,7 +299,7 @@ public class Estructura extends Base {
 						click(guardar);
 						Thread.sleep(2000);
 						click(ok);
-						System.out.println("se actualizo correctamente la estructura");
+						System.out.println("se actualizo correctamente la estructura de puesto");
 						f=1;
 					}
 				}
@@ -317,7 +317,7 @@ public class Estructura extends Base {
 			do {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+				//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("xxx")) {
 					
 					Thread.sleep(1000);
@@ -330,7 +330,7 @@ public class Estructura extends Base {
 					click(guardar);
 					Thread.sleep(2000);
 					click(ok);
-					System.out.println("se actualizo correctamente la estructura");
+					System.out.println("se actualizo correctamente la estructura departamento");
 					f=1;
 				}
 			}
@@ -347,7 +347,7 @@ public class Estructura extends Base {
 			do {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+				//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("asdwe")) {
 					
 					Thread.sleep(1000);
@@ -360,7 +360,7 @@ public class Estructura extends Base {
 					click(guardar);
 					Thread.sleep(2000);
 					click(ok);
-					System.out.println("se actualizo correctamente la estructura");
+					System.out.println("se actualizo correctamente la estructura de posicions");
 					f=1;
 				}
 			}
@@ -377,7 +377,7 @@ public class Estructura extends Base {
 		do {
 		lista = driver.findElements(By.xpath("//tbody/tr"));
 		for (int i = 1; i < lista.size()+1; i++) {
-			System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+			//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 			if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("qwerty")) {
 				
 				Thread.sleep(1000);
@@ -390,7 +390,7 @@ public class Estructura extends Base {
 				click(guardar);
 				Thread.sleep(2000);
 				click(ok);
-				System.out.println("se actualizo correctamente la estructura");
+				System.out.println("se actualizo correctamente la estructura de asignacion");
 				f=1;
 			}
 		}
@@ -411,14 +411,14 @@ public class Estructura extends Base {
 			do {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+				//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("gggg")) {
 					
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
 					Thread.sleep(1000);
 					click(ok);
-					System.out.println("se actualizo correctamente el grupo");
+					System.out.println("se elimino correctamente la estructura de grupo");
 					f=1;
 				}
 			}
@@ -433,14 +433,14 @@ public class Estructura extends Base {
 			do {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+				//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("gggg")) {
 					
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[6]/button")).click();
 					Thread.sleep(1000);
 					click(ok);
-					System.out.println("se actualizo correctamente el grupo");
+					System.out.println("se elimino correctamente la estructura de puesto");
 					f=1;
 				}
 			}
@@ -454,14 +454,14 @@ public class Estructura extends Base {
 			Thread.sleep(1000);
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size()+1; i++) {
-				System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+				//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
 				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("gggg")) {
 					
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
 					Thread.sleep(1000);
 					click(ok);
-					System.out.println("se actualizo correctamente el grupo");
+					System.out.println("se elimino correctamente la estructura departamento");
 				}
 			}
 			break;
@@ -477,7 +477,7 @@ public class Estructura extends Base {
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[9]/button")).click();
 					Thread.sleep(1000);
 					click(ok);
-					System.out.println("se actualizo correctamente el grupo");
+					System.out.println("se elimino correctamente la estructura de posicion");
 				}
 			}
 			break;
@@ -495,7 +495,7 @@ public class Estructura extends Base {
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[9]/button")).click();
 					Thread.sleep(1000);
 					click(ok);
-					System.out.println("se actualizo correctamente el grupo");
+					System.out.println("se elimino correctamente la estructura de asignacion");
 				}
 			}
 			break;

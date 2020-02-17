@@ -31,6 +31,8 @@ public class campo {
 	public void test() throws InterruptedException {
 		teste.login();
 		teste2.nuevoCampo();
+		teste2.actualizarCampo();
+		teste2.eliminarCampo();
 	}
 
 }

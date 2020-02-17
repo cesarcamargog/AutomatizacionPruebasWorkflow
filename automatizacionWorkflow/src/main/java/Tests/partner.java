@@ -23,6 +23,7 @@ public class partner {
 
 	@Test
 	public void test() throws InterruptedException {
+		
 		teste.login();
 teste2.IngresarPartner();
 	}

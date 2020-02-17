@@ -17,7 +17,9 @@ public class Campos extends Base {
 	By guardar = By.xpath("//div/div[3]/button[2]");
 	By ok = By.xpath("//div[3]/button[1]");
 	By verEliminado = By.id("swal2-content");
+	By siguiente = By.linkText("Siguiente");
 	String k;
+	int f;
 
 	public Campos(WebDriver driver) {
 		super(driver);
@@ -42,21 +44,69 @@ public class Campos extends Base {
 		}
 		Thread.sleep(1000);
 		click(guardar);
-
-		click(ok);
-		System.out.println("Se elimino correctamente");
+		Thread.sleep(2000);
+		if (getText(verEliminado).equals("Campo Guardado Correctamente")) {
+			Thread.sleep(1000);
+			click(ok);
+		}
 
 	}
 
 	public void actualizarCampo() throws InterruptedException {
+		f=0;
 		Thread.sleep(1000);
 		click(campo);
 		Thread.sleep(1000);
-		click(guardar);
+		do {
+			lista = driver.findElements(By.xpath("//tbody/tr"));
+			for (int i = 1; i < lista.size()+1; i++) {
+				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td")).getText().equals("nombre prueba")) {
+					Thread.sleep(1000);
+					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[4]/button")).click();
+					Thread.sleep(1000);
+					limpiar(nombre);
+					Thread.sleep(1000);
+					type("cambio de nombre", nombre);
+					Thread.sleep(2000);
+					click(guardar);
+					Thread.sleep(2000);
+					if (getText(verEliminado).equals("Campo Guardado Correctamente")) {
+						Thread.sleep(1000);
+						click(ok);
+						f = 1;
+					}
 
-		click(ok);
-		System.out.println("Se elimino correctamente");
+				}
+			}
+			if(f==0) {
+				click(siguiente);
+			}
+		} while (f == 0);
 
 	}
 
+	public void eliminarCampo() throws InterruptedException {
+f=0;
+		click(campo);
+		Thread.sleep(1000);
+		do {
+			lista = driver.findElements(By.xpath("//tbody/tr"));
+			for (int i = 1; i < lista.size()+1; i++) {
+				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td")).getText().equals("cambio de nombre")) {
+					Thread.sleep(1000);
+					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
+					Thread.sleep(1000);
+					if (getText(verEliminado).equals("Campo ELIMINADO Correctamente")) {
+						Thread.sleep(1000);
+						click(ok);
+						f = 1;
+					}
+
+				}
+			}
+			if(f==0) {
+				click(siguiente);
+			}
+		} while (f == 0);
+	}
 }
