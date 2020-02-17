@@ -84,6 +84,7 @@ public class Tramites extends Base {
 				}
 			}
 			if (x == 0) {
+				Thread.sleep(1000);
 				click(siguiente);
 			}
 		} while (x == 0);

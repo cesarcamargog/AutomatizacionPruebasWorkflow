@@ -382,7 +382,7 @@ public class Estructura extends Base {
 				
 				Thread.sleep(1000);
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[8]/button")).click();
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 				limpiar(nombre);
 				Thread.sleep(1000);
 				type("gggg", nombre);
