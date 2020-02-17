@@ -14,6 +14,7 @@ public class Partner extends Base {
 	By funcionario = By.cssSelector("#ulSidebar > li.treeview.menu-open > ul > li:nth-child(3) > a > span");
 	By locatorPartner = By.xpath("//div/div[1]/h3");
 	By NP = By.xpath("//span/button[2]");
+	By idNP = By.xpath("//div/div[1]/h3");
 	By numero = By.id("txtnumero");
 	By identificador = By.id("txtidentificador");
 	By personafisica = By.id("txtpersonaFisica");
