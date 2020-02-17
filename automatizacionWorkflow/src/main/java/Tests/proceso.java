@@ -24,11 +24,13 @@ public class proceso {
 
 	@After
 	public void tearDown() throws Exception {
+		driver.quit();
 	}
 
 	@Test
 	public void test() throws InterruptedException {
 		teste.login();
+		teste2.IngresarProceso();
 		teste2.actualizar();
 		teste2.eliminar();
 	}

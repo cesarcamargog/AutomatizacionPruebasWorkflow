@@ -14,7 +14,7 @@ public class Procesos extends Base {
 	By serie = By.name("serie");
 	By nombre = By.name("nombre");
 	By descripcion = By.name("descripcion");
-	By dependendia = By.className("dependenciaId");
+	By dependendia = By.name("dependenciaId");
 	By guardar = By.xpath("//div/div[2]/button");
 	By ok = By.xpath("//div[5]/div/div[3]/button[1]");
 	By todos = By.xpath("//div/div[1]/button[4]");
@@ -39,9 +39,9 @@ public class Procesos extends Base {
 		Thread.sleep(1000);
 		type("esta es solo una descripcion de prueba", descripcion);
 		Thread.sleep(1000);
-		elemento = findlocator(dependendia);
-		lista = obtenerlista(elemento);
-		for (int i = 0; i < lista.size() + 1; i++) {
+		elemento = driver.findElement(dependendia);
+		lista = elemento.findElements(By.tagName("option"));
+		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getText().equals("PROTECCIÓN CIVIL")) {
 				lista.get(i).click();
 			}
@@ -61,7 +61,7 @@ public class Procesos extends Base {
 		do {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i < lista.size() + 1; i++) {
-				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[1]")).getText().equals("f")) {
+				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[1]")).getText().equals("xxx")) {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[6]")).click();
 					Thread.sleep(1000);
