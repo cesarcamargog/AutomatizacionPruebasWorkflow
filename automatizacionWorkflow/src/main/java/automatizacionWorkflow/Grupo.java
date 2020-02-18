@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Grupo extends Base {
+	Login t;
 	WebElement element;
 	List<WebElement> lista, options, options2;
 	By menu = By.xpath("//*[@id=\"ulSidebar\"]/li[4]/ul");
@@ -24,7 +25,7 @@ public class Grupo extends Base {
 	By GS = By.xpath("//*[@id=\"ulSidebar\"]/li[4]/ul/li[2]/a/span");
 	By SelectG = By.name("grupo");
 	String r;
-
+ErrorJira j;
 	int grupo, grupo1;
 	NombresPruebas gp;
 	String[][] grupos;
@@ -35,6 +36,7 @@ public class Grupo extends Base {
 	}
 
 	public void abrirmenuG() throws InterruptedException {
+	
 		Thread.sleep(2000);
 		if (!isdisplayed(menu)) {
 			click(grup);
@@ -48,7 +50,7 @@ public class Grupo extends Base {
 		grupos = gp.setgrupos();
 		
 		Thread.sleep(2000);
-		for (int i = 1; i < 4; i++) {
+	/*	for (int i = 1; i < 4; i++) {
 			IG(i);
 		}
 		for (int i = 1; i < 4; i++) {
@@ -56,12 +58,14 @@ public class Grupo extends Base {
 		}
 		for (int i = 1; i < 4; i++) {
 			EliminarGrupos(i);
-		}
+		}*/
+		IG(3);
+		
 	}
 
 	public void IG(int f) throws InterruptedException {
 
-	
+	try {
 		Thread.sleep(1000);
 		switch (f) {
 		case 1:
@@ -101,7 +105,7 @@ public class Grupo extends Base {
 			click(NG);
 			Thread.sleep(1000);
 			type(grupos[grupo][2], NombreC);
-			element = driver.findElement(By.name("grupoEmpresa"));
+			element = driver.findElement(By.name("grupoEmresa"));
 			element.click();
 			Thread.sleep(1000);
 			options2 = element.findElements(By.tagName("option"));
@@ -119,6 +123,11 @@ public class Grupo extends Base {
 		Thread.sleep(2000);
 		click(ok);
 		System.out.println("se ingreso correctamente el "+r);
+	}catch (Exception e) {
+		System.out.println(e.toString());// TODO: handle exception
+		j.capturaError(e.toString());
+	}
+		
 	}
 
 	public void actualizarGrupos(int f) throws InterruptedException {

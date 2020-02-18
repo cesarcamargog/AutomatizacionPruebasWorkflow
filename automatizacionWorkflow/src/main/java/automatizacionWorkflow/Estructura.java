@@ -28,6 +28,7 @@ public class Estructura extends Base {
 	By Fi = By.name("fechaInicio");
 	By Ff= By.name("fechaFin");
 	By check = By.id("swal2-content");
+	String hg;
 	int f,x;
 
 	public Estructura(WebDriver driver) {
@@ -344,33 +345,40 @@ public class Estructura extends Base {
 			Thread.sleep(1000);
 			click(Epos);
 			Thread.sleep(1000);
-			do {
-			lista = driver.findElements(By.xpath("//tbody/tr"));
-			for (int i = 1; i < lista.size()+1; i++) {
-				//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
-				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("asdwe")) {
-					
-					Thread.sleep(1000);
-					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[8]/button")).click();
-					Thread.sleep(2000);
-					limpiar(nombre);
-					Thread.sleep(1000);
-					type("gggg", nombre);
-					Thread.sleep(1000);
-					click(guardar);
-					Thread.sleep(2000);
-					click(ok);
-					System.out.println("se actualizo correctamente la estructura de posicions");
-					f=1;
+			if(isdisplayed(By.xpath("//section/div/div/div[1]/h3"))) {
+				hg = getText(By.xpath("//section/div/div/div[1]/h3"));
+				if(hg.equals("EDITAR ESTRUCTURA POSICION")) {
+					do {
+						lista = driver.findElements(By.xpath("//tbody/tr"));
+						for (int i = 1; i < lista.size()+1; i++) {
+							//System.out.println(driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText());
+							if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals("asdwe")) {
+								
+								Thread.sleep(1000);
+								driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[8]/button")).click();
+								Thread.sleep(2000);
+								limpiar(nombre);
+								Thread.sleep(1000);
+								type("gggg", nombre);
+								Thread.sleep(1000);
+								click(guardar);
+								Thread.sleep(2000);
+								click(ok);
+								System.out.println("se actualizo correctamente la estructura de posicions");
+								f=1;
+							}
+						}
+						if (f == 0) {
+							driver.findElement(By.linkText("Siguiente")).click();
+						}
+					}while(f!=1);
 				}
 			}
-			if (f == 0) {
-				driver.findElement(By.linkText("Siguiente")).click();
-			}
-		}while(f!=1);
+			
 			break;
 			//<--------------------------------------------------------->
 		case 5:
+			
 			Thread.sleep(1000);
 			click(EA);
 		Thread.sleep(1000);

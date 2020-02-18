@@ -26,6 +26,10 @@ public class Base {
 		driver = new ChromeDriver(opciones);
 		return driver;
 	}
+	public void submit(By locator) {
+		elemento = driver.findElement(locator);
+		elemento.submit();
+	}
 
 	public WebElement findlocator(By locator) {
 		return driver.findElement(locator);
