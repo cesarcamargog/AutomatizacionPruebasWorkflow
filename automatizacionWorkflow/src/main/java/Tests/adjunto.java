@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import automatizacionWorkflow.Adjuntos;
 import automatizacionWorkflow.Login;
 
@@ -28,7 +30,7 @@ public class adjunto {
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws InterruptedException, UnirestException {
 		Teste.login();
 	teste2.ingresarAdjunto();
 		teste2.actualizarAdjunto();

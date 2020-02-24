@@ -4,6 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import automatizacionWorkflow.Login;
 import automatizacionWorkflow.Procesos;
 
@@ -28,7 +31,7 @@ public class proceso {
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws InterruptedException, UnirestException {
 		teste.login();
 		teste2.IngresarProceso();
 		teste2.actualizar();

@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Roles extends Base{
 	WebElement elemento;
 	List<WebElement> lista;
@@ -26,7 +28,8 @@ int x;
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void ingresarRol() throws InterruptedException {
+	public void ingresarRol() throws InterruptedException, UnirestException {
+		try {
 		click(rol);
 		Thread.sleep(1000);
 		click(NR);
@@ -51,11 +54,14 @@ int x;
 		click(ok);
 		System.out.println("Se guardo correctamente");
 		
+	}}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "ingresarRol");
 	}
 	
 	}
 
-	public void ActualizarRol() throws InterruptedException {
+	public void ActualizarRol() throws InterruptedException, UnirestException {
+		try {
 	Thread.sleep(1000);
 
 	lista = driver.findElements(By.xpath("//tbody/tr"));
@@ -77,11 +83,13 @@ int x;
 			}
 		}
 		
+	}}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "actualizarRol");
 	}
 	
 		
 	}
-	public void eliminarRoles() {
+	public void eliminarRoles() throws UnirestException {
 		try {
 			lista = driver.findElements(By.xpath("//tbody/tr"));
 			for (int i = 1; i <lista.size()+1; i++) {
@@ -98,9 +106,9 @@ int x;
 				}
 				
 			}
-		}catch (Exception e) {
-			// TODO: handle exception
-		}
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "eliminarRoles");
+				}
 		
 	}
 }

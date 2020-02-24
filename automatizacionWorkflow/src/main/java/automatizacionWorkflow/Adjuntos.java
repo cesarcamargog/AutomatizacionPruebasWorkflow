@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Adjuntos extends Base {
 	WebElement elemento;
 	List<WebElement> lista;
@@ -25,7 +27,7 @@ public class Adjuntos extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void ingresarAdjunto() {
+	public void ingresarAdjunto() throws UnirestException {
 		try {
 			click(adj);
 			Thread.sleep(1000);
@@ -42,11 +44,12 @@ public class Adjuntos extends Base {
 			Thread.sleep(1000);
 			click(ok);
 		} catch (Exception e) {
-			System.out.println(e);
+	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "ingresarAdjunto");
 		}
 	}
 
-	public void actualizarAdjunto() throws InterruptedException {
+	public void actualizarAdjunto() throws InterruptedException, UnirestException {
+		try {
 		Thread.sleep(1000);
 		click(adj);
 		Thread.sleep(1000);
@@ -80,10 +83,13 @@ public class Adjuntos extends Base {
 				click(siguiente);
 			}
 		} while (x == 0);
-
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "actualizarAdjunto");
+				}
 	}
 
-	public void eliminarAdjunto() throws InterruptedException {
+	public void eliminarAdjunto() throws InterruptedException, UnirestException {
+		try {
 Thread.sleep(1000);
 click(adj);
 Thread.sleep(1000);
@@ -103,5 +109,7 @@ do {
 		click(siguiente);
 	}
 } while (x == 0);
+	}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "eliminarAdjunto");
 	}
-}
+}}

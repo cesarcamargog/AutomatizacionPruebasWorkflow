@@ -5,6 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
+import automatizacionWorkflow.ErrorJira;
 import automatizacionWorkflow.Grupo;
 import automatizacionWorkflow.Login;
 
@@ -19,6 +22,7 @@ public class grupos {
 		driver = teste.iniciar();
 		teste.get("https://s4v2.solucionesdigitales.com.mx:8952/#!/login");
 		teste2 = new Grupo(driver);
+	
 	}
 
 	@After
@@ -27,7 +31,7 @@ public class grupos {
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws InterruptedException, UnirestException {
 		teste.login();
 		teste2.abrirmenuG();
 	}

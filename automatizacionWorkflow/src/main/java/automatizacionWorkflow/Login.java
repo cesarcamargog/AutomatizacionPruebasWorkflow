@@ -3,6 +3,8 @@ package automatizacionWorkflow;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Login extends Base {
 
 	By loginlocator = By.xpath("//*[@id=\"principalFrame\"]/div[1]/div[2]/div[1]/h1");
@@ -16,15 +18,18 @@ public class Login extends Base {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void login() throws InterruptedException {
-		Thread.sleep(1000);
-		if(isdisplayed(loginlocator)) {
-			type("root", usuario);
-			type("root", contraseña);
-			click(submit);
-			Thread.sleep(1000);
-		}
-		
+	public void login() throws InterruptedException, UnirestException {
+		try {
+			//Thread.sleep(1000);
+		 esperarElemento(loginlocator);
+				type("root", usuario);
+				type("root", contraseña);
+				click(submit);
+				Thread.sleep(1000);
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
+				}
+	
 	}
 	public boolean ingreso() throws InterruptedException {
 		Thread.sleep(1000);

@@ -1,5 +1,7 @@
 package automatizacionWorkflow;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
@@ -7,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Base {
 	WebDriver driver;
@@ -18,7 +22,7 @@ public class Base {
 		this.driver = driver;
 
 	}
-
+//----------------------------------------Metodos Selenium---------------------
 	public WebDriver iniciar() {
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 		opciones = new ChromeOptions();
@@ -68,6 +72,33 @@ public class Base {
 public String getText(By locator) {
 	text= driver.findElement(locator).getText();
 	return text;
+}
+//--------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------Obtener Error---------------------------------------------------------------
+public String ErrorLog(Exception e) {
+	StringWriter errors = new StringWriter();
+	e.printStackTrace(new PrintWriter(errors));
+	return errors.toString();
+}
+//------------------------------------------------------------------------------------------------------------------
+
+//----------------------------------------Esperas(Waits)------------------------------------------------------------
+public static void EsperaNormaL() {
+	try {
+		Thread.sleep(1000);
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+}
+
+public void  esperarElemento(By locator) {
+
+		WebDriverWait wait = new WebDriverWait(driver, 10000);
+	    WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	
+
+
 }
 	
 }

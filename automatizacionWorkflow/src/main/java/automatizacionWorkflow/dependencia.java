@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class dependencia extends Base{
 	List<WebElement> lista;
 	By dependencia = By.xpath("//*[@id=\"ulSidebar\"]/li[6]/a/span");
@@ -24,7 +26,8 @@ public class dependencia extends Base{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void IngresarDependencia() throws InterruptedException {
+	public void IngresarDependencia() throws InterruptedException, UnirestException {
+		try {
 		click(dependencia);
 		Thread.sleep(1000);
 		click(nd);
@@ -37,10 +40,13 @@ public class dependencia extends Base{
 		Thread.sleep(1000);
 		click(ok);
 		
-		
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IngresarDependencia");
+				}
 	}
 
-	public void actualizardependencia() throws InterruptedException {
+	public void actualizardependencia() throws InterruptedException, UnirestException {
+		try {
 		Thread.sleep(1000);
 		click(dependencia);
 		Thread.sleep(1000);
@@ -67,9 +73,13 @@ public class dependencia extends Base{
 			driver.findElement(By.linkText("Siguiente")).click();
 		}
 	}while(f!=1);
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "actualizardependencia");
+				}
 	}
 
-	public void Eliminardependencia() throws InterruptedException {
+	public void Eliminardependencia() throws InterruptedException, UnirestException {
+		try {
 		Thread.sleep(1000);
 		click(dependencia);
 		Thread.sleep(1000);
@@ -93,5 +103,8 @@ public class dependencia extends Base{
 			driver.findElement(By.linkText("Siguiente")).click();
 		}
 	}while(f!=1);
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "Eliminardependencia");
+				}
 	}
 }

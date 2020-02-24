@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import automatizacionWorkflow.Login;
 import automatizacionWorkflow.Tramites;
 
@@ -29,7 +31,7 @@ public class tramite {
 	
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws InterruptedException, UnirestException {
 		teste.login();
 		teste2.nuevoTramite();
 	}

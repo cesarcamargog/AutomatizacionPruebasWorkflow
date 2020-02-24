@@ -3,8 +3,12 @@ package automatizacionWorkflow;
 import java.util.List;
 import java.util.Random;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Partner extends Base {
 	By menu = By.cssSelector("#ulSidebar > li:nth-child(3) > ul");
@@ -54,7 +58,7 @@ public class Partner extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void IngresarPartner() throws InterruptedException {
+	public void IngresarPartner() throws InterruptedException, UnirestException {
 		Thread.sleep(1000);
 		if (!isdisplayed(menu)) {
 			click(partner);
@@ -67,7 +71,7 @@ public class Partner extends Base {
 		}
 	}
 
-	public void IC(int f) throws InterruptedException {
+	public void IC(int f) throws InterruptedException, UnirestException {
 		g=0;
 		try {
 			Thread.sleep(1000);
@@ -171,13 +175,14 @@ public class Partner extends Base {
 				
 			}
 		}catch(Exception e) {
-			
+	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
 		}
 		
 		
 	}
 
-	public void eliminarPartner(int f) throws InterruptedException {
+	public void eliminarPartner(int f) throws InterruptedException, UnirestException {
+		try {
 		switch (f) {
 		case 1:
 			click(ciudadano);
@@ -229,13 +234,16 @@ public class Partner extends Base {
 			}
 		} while (g == 0);
 		
-		
+		}catch(Exception e) {
+	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "EliminarPartner");
+		}
 		
 		
 		
 		
 	}//---------------eliminar partner-------------------
-public void actualizarpartner(int f) throws InterruptedException{
+public void actualizarpartner(int f) throws InterruptedException, UnirestException{
+	try {
 	Thread.sleep(2000);
 	switch (f) {
 	case 1:
@@ -295,7 +303,9 @@ public void actualizarpartner(int f) throws InterruptedException{
 	} while (y == 0);
 	System.out.println("Se actualizo correctamente");
 	Thread.sleep(2000);
-
+	}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "ActualizarPartner");
+			}
 }
 	
 	

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Tramites extends Base {
 	WebElement elemento;
 	List<WebElement> lista;
@@ -33,7 +35,8 @@ public class Tramites extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void nuevoTramite() throws InterruptedException {
+	public void nuevoTramite() throws InterruptedException, UnirestException {
+		try {
 		click(tram);
 		Thread.sleep(1000);
 		do {
@@ -89,6 +92,8 @@ public class Tramites extends Base {
 			}
 		} while (x == 0);
 
+	}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
 	}
 
-}
+}}

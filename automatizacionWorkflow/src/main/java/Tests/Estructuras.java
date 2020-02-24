@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import automatizacionWorkflow.Estructura;
 import automatizacionWorkflow.Login;
 
@@ -23,7 +25,7 @@ public class Estructuras {
 	}
 
 	@Test
-	public void test() throws InterruptedException {
+	public void test() throws InterruptedException, UnirestException {
 		teste.login();
 		teste2.abrirmenu();
 	}

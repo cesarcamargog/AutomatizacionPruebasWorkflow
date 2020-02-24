@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Estructura extends Base {
 	WebElement elemento;
 	List<WebElement> lista;
@@ -36,7 +38,8 @@ public class Estructura extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void abrirmenu() throws InterruptedException {
+	public void abrirmenu() throws InterruptedException, UnirestException {
+		try {
 		Thread.sleep(1000);
 		if (!isdisplayed(menu)) {
 			click(estructura);
@@ -55,9 +58,13 @@ public class Estructura extends Base {
 		for (int i = 1; i < 6; i++) {
 			Eliminar(i);
 		}
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
+				}
 	}
 
-	public void IngresarEstructuras(int h) throws InterruptedException {
+	public void IngresarEstructuras(int h) throws InterruptedException, UnirestException {
+		try {
 		Thread.sleep(1000);
 		switch (h) {
 		case 1:
@@ -244,10 +251,13 @@ public class Estructura extends Base {
 				Thread.sleep(2000);
 			}
 			break;
+		}}catch(Exception e) {
+	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IngresarEstructura");
 		}
 	}
 
-	public void Actualizar(int h) throws InterruptedException {
+	public void Actualizar(int h) throws InterruptedException, UnirestException {
+		try {
 		switch(h) {
 		case 1:
 			Thread.sleep(1000);
@@ -407,11 +417,14 @@ public class Estructura extends Base {
 		}
 	}while(f!=1);
 			break;
+		}}catch(Exception e) {
+	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "Actualizar");
 		}
 		
 	}
 
-	public void Eliminar(int h) throws InterruptedException {
+	public void Eliminar(int h) throws InterruptedException, UnirestException {
+		try {
 		switch(h) {
 		case 5:
 			click(EG);
@@ -508,5 +521,7 @@ public class Estructura extends Base {
 			}
 			break;
 		}
+	}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
 	}
-}
+}}

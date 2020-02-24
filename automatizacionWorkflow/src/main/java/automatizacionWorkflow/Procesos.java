@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Procesos extends Base {
 	WebElement elemento;
 	List<WebElement> lista;
@@ -28,7 +30,8 @@ public class Procesos extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void IngresarProceso() throws InterruptedException {
+	public void IngresarProceso() throws InterruptedException, UnirestException {
+		try {
 		click(pro);
 		Thread.sleep(1000);
 		click(np);
@@ -50,10 +53,13 @@ public class Procesos extends Base {
 		click(guardar);
 		Thread.sleep(1000);
 		click(ok);
-
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IngresarProceso");
+				}
 	}
 
-	public void actualizar() throws InterruptedException {
+	public void actualizar() throws InterruptedException, UnirestException {
+		try {
 		click(pro);
 		Thread.sleep(1000);
 		click(todos);
@@ -84,10 +90,13 @@ public class Procesos extends Base {
 				click(siguiente);
 			}
 		} while (g == 0);
-
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "actualizar");
+				}
 	}
 
-	public void eliminar() throws InterruptedException {
+	public void eliminar() throws InterruptedException, UnirestException {
+		try {
 		click(pro);
 		Thread.sleep(1000);
 		click(guardados);
@@ -125,6 +134,8 @@ public class Procesos extends Base {
 					click(siguiente);
 				}
 			} while (g == 0);
+		}}catch(Exception e) {
+	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "eliminar");
 		}
 		
 	}

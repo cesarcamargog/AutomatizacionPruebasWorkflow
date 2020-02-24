@@ -1,11 +1,15 @@
 package automatizacionWorkflow;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Grupo extends Base {
 	Login t;
@@ -35,7 +39,7 @@ ErrorJira j;
 		// TODO Auto-generated constructor stub
 	}
 
-	public void abrirmenuG() throws InterruptedException {
+	public void abrirmenuG() throws InterruptedException, UnirestException {
 	
 		Thread.sleep(2000);
 		if (!isdisplayed(menu)) {
@@ -50,7 +54,7 @@ ErrorJira j;
 		grupos = gp.setgrupos();
 		
 		Thread.sleep(2000);
-	/*	for (int i = 1; i < 4; i++) {
+		for (int i = 1; i < 4; i++) {
 			IG(i);
 		}
 		for (int i = 1; i < 4; i++) {
@@ -58,12 +62,12 @@ ErrorJira j;
 		}
 		for (int i = 1; i < 4; i++) {
 			EliminarGrupos(i);
-		}*/
-		IG(3);
+		}
+		
 		
 	}
 
-	public void IG(int f) throws InterruptedException {
+	public void IG(int f) throws InterruptedException, UnirestException {
 
 	try {
 		Thread.sleep(1000);
@@ -105,7 +109,7 @@ ErrorJira j;
 			click(NG);
 			Thread.sleep(1000);
 			type(grupos[grupo][2], NombreC);
-			element = driver.findElement(By.name("grupoEmresa"));
+			element = driver.findElement(By.name("grupoEmpresa"));
 			element.click();
 			Thread.sleep(1000);
 			options2 = element.findElements(By.tagName("option"));
@@ -124,85 +128,93 @@ ErrorJira j;
 		click(ok);
 		System.out.println("se ingreso correctamente el "+r);
 	}catch (Exception e) {
-		System.out.println(e.toString());// TODO: handle exception
-		j.capturaError(e.toString());
+DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IG");
+
 	}
 		
 	}
 
-	public void actualizarGrupos(int f) throws InterruptedException {
-		Thread.sleep(2000);
-		switch (f) {
-		case 1:
-			Thread.sleep(1000);
-			click(G);
-			Thread.sleep(1000);
-			lista = driver.findElements(By.xpath("//tbody/tr"));
-			for (int i = 1; i < lista.size()+1; i++) {
-				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][0])) {
-					
-					Thread.sleep(1000);
-					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[3]/button")).click();
-					Thread.sleep(1000);
-					limpiar(nombre);
-					Thread.sleep(1000);
-					type(grupos[grupo1][0], nombre);
-					Thread.sleep(1000);
-					click(guardar);
-					Thread.sleep(2000);
-					click(ok);
-					System.out.println("se actualizo correctamente el grupo");
+	public void actualizarGrupos(int f) throws InterruptedException, UnirestException {
+		try {
+			Thread.sleep(2000);
+			switch (f) {
+			case 1:
+				Thread.sleep(1000);
+				click(G);
+				Thread.sleep(1000);
+				lista = driver.findElements(By.xpath("//tbody/tr"));
+				for (int i = 1; i < lista.size()+1; i++) {
+					if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][0])) {
+						
+						Thread.sleep(1000);
+						driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[3]/button")).click();
+						Thread.sleep(1000);
+						limpiar(nombre);
+						Thread.sleep(1000);
+						type(grupos[grupo1][0], nombre);
+						Thread.sleep(1000);
+						click(guardar);
+						Thread.sleep(2000);
+						click(ok);
+						System.out.println("se actualizo correctamente el grupo");
+					}
 				}
-			}
-			break;
-		case 2:
-			Thread.sleep(1000);
-			click(GE);
-			Thread.sleep(1000);
-			lista = driver.findElements(By.xpath("//tbody/tr"));
-			for (int i = 1; i < lista.size() + 1; i++) {
-				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][1])) {
-					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[6]/button")).click();
-					Thread.sleep(1000);
-					limpiar(logo);
-					Thread.sleep(1000);
-					type(grupos[grupo1][1], logo);
-					Thread.sleep(1000);
-					limpiar(NombreC);
-					Thread.sleep(1000);
-					type(grupos[grupo1][1], NombreC);
-					Thread.sleep(1000);
-					click(guardar);
-					Thread.sleep(2000);
-					click(ok);
-					System.out.println("se actualizo correctamente el grupo Empresa");
+				break;
+			case 2:
+				Thread.sleep(1000);
+				click(GE);
+				Thread.sleep(1000);
+				lista = driver.findElements(By.xpath("//tbody/tr"));
+				for (int i = 1; i < lista.size() + 1; i++) {
+					if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][1])) {
+						driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[6]/button")).click();
+						Thread.sleep(1000);
+						limpiar(logo);
+						Thread.sleep(1000);
+						type(grupos[grupo1][1], logo);
+						Thread.sleep(1000);
+						limpiar(NombreC);
+						Thread.sleep(1000);
+						type(grupos[grupo1][1], NombreC);
+						Thread.sleep(1000);
+						click(guardar);
+						Thread.sleep(2000);
+						click(ok);
+						System.out.println("se actualizo correctamente el grupo Empresa");
+					}
 				}
-			}
-			break;
-		case 3:
-			Thread.sleep(1000);
-			click(GS);
-			Thread.sleep(1000);
-			lista = driver.findElements(By.xpath("//tbody/tr"));
-			for (int i = 1; i < lista.size() + 1; i++) {
-				if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][2])) {
-					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[4]/button")).click();
-					Thread.sleep(1000);
-					limpiar(NombreC);
-					Thread.sleep(500);
-					type(grupos[grupo1][2], NombreC);
-					Thread.sleep(1000);
-					click(guardar);
-					Thread.sleep(2000);
-					click(ok);
-					System.out.println("se actualizo correctamente el grupo Sucursal");
+				break;
+			case 3:
+				Thread.sleep(1000);
+				click(GS);
+				Thread.sleep(1000);
+				lista = driver.findElements(By.xpath("//tbody/tr"));
+				for (int i = 1; i < lista.size() + 1; i++) {
+					if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo][2])) {
+						driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[4]/button")).click();
+						Thread.sleep(1000);
+						limpiar(NombreC);
+						Thread.sleep(500);
+						type(grupos[grupo1][2], NombreC);
+						Thread.sleep(1000);
+						click(guardar);
+						Thread.sleep(2000);
+						click(ok);
+						System.out.println("se actualizo correctamente el grupo Sucursal");
+					}
 				}
+				break;
 			}
-			break;
-		}
+			
+		}catch (Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "actualizarGrupo");
+
+				}
+		
 
 	}
-public void EliminarGrupos(int f) throws InterruptedException {
+public void EliminarGrupos(int f) throws InterruptedException, UnirestException {
+try {
 	Thread.sleep(2000);
 	switch (f) {
 	case 3:
@@ -250,6 +262,11 @@ public void EliminarGrupos(int f) throws InterruptedException {
 		}
 		break;
 	}
+}catch (Exception e) {
+DefinirError.getException(ErrorLog(e), this.getClass().toString(), "EliminarGrupos");
+
+}
+	
 }
 
 public int setgrup() {

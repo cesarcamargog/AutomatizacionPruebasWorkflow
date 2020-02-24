@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 public class Campos extends Base {
 	WebElement elemento;
 	List<WebElement> lista;
@@ -26,7 +28,8 @@ public class Campos extends Base {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void nuevoCampo() throws InterruptedException {
+	public void nuevoCampo() throws InterruptedException, UnirestException {
+		try {
 		Thread.sleep(1000);
 		click(campo);
 		Thread.sleep(1000);
@@ -49,10 +52,13 @@ public class Campos extends Base {
 			Thread.sleep(1000);
 			click(ok);
 		}
-
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "nuevoCampo");
+				}
 	}
 
-	public void actualizarCampo() throws InterruptedException {
+	public void actualizarCampo() throws InterruptedException, UnirestException {
+		try {
 		f=0;
 		Thread.sleep(1000);
 		click(campo);
@@ -82,10 +88,13 @@ public class Campos extends Base {
 				click(siguiente);
 			}
 		} while (f == 0);
-
+		}catch(Exception e) {
+			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "actualizarCampo");
+				}
 	}
 
-	public void eliminarCampo() throws InterruptedException {
+	public void eliminarCampo() throws InterruptedException, UnirestException {
+		try {
 f=0;
 		click(campo);
 		Thread.sleep(1000);
@@ -108,5 +117,7 @@ f=0;
 				click(siguiente);
 			}
 		} while (f == 0);
+	}catch(Exception e) {
+		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "eliminarCampo");
 	}
-}
+}}
