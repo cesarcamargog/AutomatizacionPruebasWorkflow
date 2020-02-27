@@ -22,6 +22,10 @@ public static void getException(String e,String clase,String metodo) throws Unir
 	if(e.contains("SessionNotFoundException")) {
 		ErrorJira.run("El navegador no se encuentra", e, clase, metodo);
 	}
+	if(e.contains("ElementClickInterceptedException")) {
+	ErrorJira.run("No se puede dar click al elemento", e, clase, metodo);
+	
+	}
 	
 }
 }

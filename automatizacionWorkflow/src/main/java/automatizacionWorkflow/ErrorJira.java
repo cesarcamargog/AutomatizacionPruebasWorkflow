@@ -15,7 +15,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 
 public class ErrorJira {
-static int x=1;
+static int x=6;
 	public static void run(String Tipo,String error,String Clase, String Metodo) throws UnirestException {
 		// The payload definition using the Jackson library
 		JsonNodeFactory jnf = JsonNodeFactory.instance;

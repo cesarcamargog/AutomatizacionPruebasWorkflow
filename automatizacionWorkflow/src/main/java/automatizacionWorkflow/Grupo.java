@@ -28,6 +28,7 @@ public class Grupo extends Base {
 	By RS = By.name("razonSocial");
 	By GS = By.xpath("//*[@id=\"ulSidebar\"]/li[4]/ul/li[2]/a/span");
 	By SelectG = By.name("grupo");
+	By verificar=By.id("swal2-content");
 	String r;
 ErrorJira j;
 	int grupo, grupo1;
@@ -80,6 +81,12 @@ ErrorJira j;
 			Thread.sleep(1000);
 			type(grupos[grupo][0], nombre);
 			r="grupo";
+			click(guardar);
+			Thread.sleep(2000);
+			if(getText(verificar).contentEquals("Grupo agregado correctamente")) {
+				Thread.sleep(1000);
+				click(ok);
+				Thread.sleep(1000);}
 			break;
 		case 2:
 			click(GE);
@@ -102,6 +109,12 @@ ErrorJira j;
 				}
 			}
 			r="grupo empresa";
+			click(guardar);
+			Thread.sleep(2000);
+			if(getText(verificar).contentEquals("Grupo de Empresa agregado correctamente")) {
+				Thread.sleep(1000);
+				click(ok);
+				Thread.sleep(1000);}
 			break;
 		case 3:
 			click(GS);
@@ -121,12 +134,15 @@ ErrorJira j;
 		
 			Thread.sleep(1000);
 			r="grupo Sucursal";
+			click(guardar);
+			Thread.sleep(2000);
+			if(getText(verificar).contentEquals("Grupo de Sucursales agregado correctamente")) {
+				Thread.sleep(1000);
+				click(ok);
+				Thread.sleep(1000);}
 			break;
 		}
-		click(guardar);
-		Thread.sleep(2000);
-		click(ok);
-		System.out.println("se ingreso correctamente el "+r);
+	
 	}catch (Exception e) {
 DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IG");
 
@@ -155,8 +171,10 @@ DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IG");
 						Thread.sleep(1000);
 						click(guardar);
 						Thread.sleep(2000);
-						click(ok);
-						System.out.println("se actualizo correctamente el grupo");
+						if(getText(verificar).contentEquals("Grupo agregado correctamente")) {
+							Thread.sleep(1000);
+							click(ok);
+							Thread.sleep(1000);}
 					}
 				}
 				break;
@@ -179,8 +197,10 @@ DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IG");
 						Thread.sleep(1000);
 						click(guardar);
 						Thread.sleep(2000);
-						click(ok);
-						System.out.println("se actualizo correctamente el grupo Empresa");
+						if(getText(verificar).contentEquals("Grupo de Empresa agregado correctamente")) {
+							Thread.sleep(1000);
+							click(ok);
+							Thread.sleep(1000);}
 					}
 				}
 				break;
@@ -199,8 +219,10 @@ DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IG");
 						Thread.sleep(1000);
 						click(guardar);
 						Thread.sleep(2000);
-						click(ok);
-						System.out.println("se actualizo correctamente el grupo Sucursal");
+						if(getText(verificar).contentEquals("Grupo de Sucursales agregado correctamente")) {
+							Thread.sleep(1000);
+							click(ok);
+							Thread.sleep(1000);}
 					}
 				}
 				break;
@@ -228,13 +250,15 @@ try {
 				Thread.sleep(1000);
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[4]/button")).click();
 				Thread.sleep(1000);
-				click(ok);
-				System.out.println("se elimino correctamente el grupo");
+				if(getText(verificar).equals("Grupo eliminado correctamente")) {
+					Thread.sleep(1000);
+					click(ok);
+					Thread.sleep(1000);}
 			}
 		}
 		break;
 	case 2:
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		click(GE);
 		Thread.sleep(1000);
 		lista = driver.findElements(By.xpath("//tbody/tr"));
@@ -242,8 +266,10 @@ try {
 			if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo1][1])) {
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[7]/button")).click();
 				Thread.sleep(1000);
-				click(ok);
-				System.out.println("se elimino correctamente el grupo Empresa");
+				if(getText(verificar).contentEquals("Grupo de Empresa eliminado correctamente")) {
+					Thread.sleep(1000);
+					click(ok);
+					Thread.sleep(1000);}
 			}
 		}
 		break;
@@ -256,8 +282,10 @@ try {
 			if (driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[2]")).getText().equals(grupos[grupo1][2])) {
 				driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
 				Thread.sleep(1000);
-				click(ok);
-				System.out.println("se elimino correctamente el grupo Sucursal");
+				if(getText(verificar).contentEquals("Grupo de Sucursales eliminado correctamente")) {
+					Thread.sleep(1000);
+					click(ok);
+					Thread.sleep(1000);}
 			}
 		}
 		break;

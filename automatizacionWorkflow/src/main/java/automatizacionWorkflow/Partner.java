@@ -287,8 +287,12 @@ public void actualizarpartner(int f) throws InterruptedException, UnirestExcepti
 						type("UsuarioCambiado", usuario);
 						Thread.sleep(2000);
 						click(guardar);
-						Thread.sleep(2000);
+						Thread.sleep(1000);
+					if(getText(verEliminado).equals("Partner Guardado Correctamente")) {
+						Thread.sleep(1000);
 						click(ok);
+						Thread.sleep(1000);
+					}
 						
 						y = 1;
 						break;

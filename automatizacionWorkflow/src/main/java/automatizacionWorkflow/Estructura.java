@@ -39,7 +39,7 @@ public class Estructura extends Base {
 	}
 
 	public void abrirmenu() throws InterruptedException, UnirestException {
-		try {
+
 		Thread.sleep(1000);
 		if (!isdisplayed(menu)) {
 			click(estructura);
@@ -58,9 +58,7 @@ public class Estructura extends Base {
 		for (int i = 1; i < 6; i++) {
 			Eliminar(i);
 		}
-		}catch(Exception e) {
-			DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
-				}
+		
 	}
 
 	public void IngresarEstructuras(int h) throws InterruptedException, UnirestException {
@@ -253,6 +251,7 @@ public class Estructura extends Base {
 			break;
 		}}catch(Exception e) {
 	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IngresarEstructura");
+	e.printStackTrace();
 		}
 	}
 
@@ -260,7 +259,6 @@ public class Estructura extends Base {
 		try {
 		switch(h) {
 		case 1:
-			Thread.sleep(1000);
 			click(EG);
 			Thread.sleep(1000);
 			  do {
@@ -278,9 +276,11 @@ public class Estructura extends Base {
 						Thread.sleep(1000);
 						click(guardar);
 						Thread.sleep(2000);
-						click(ok);
-						System.out.println("se actualizo correctamente la estructura de grupo");
-						f=1;
+						if(getText(check).equals("Estructra Grupo agregada correctamente")) {
+							click(ok);
+							Thread.sleep(2000);
+							f=1;
+						}
 					}
 				}
 				if (f == 0) {
@@ -291,7 +291,7 @@ public class Estructura extends Base {
 			break;
 			//<-------------------------------------------------------->
 		case 2:
-			Thread.sleep(1000);
+
 			click(Ep);
 			Thread.sleep(1000);
 			lista = driver.findElements(By.xpath("//tbody/tr"));
@@ -309,9 +309,11 @@ public class Estructura extends Base {
 						Thread.sleep(1000);
 						click(guardar);
 						Thread.sleep(2000);
-						click(ok);
-						System.out.println("se actualizo correctamente la estructura de puesto");
-						f=1;
+						if(getText(check).equals("Estructura Puesto agregada correctamente")) {
+							click(ok);
+							Thread.sleep(2000);
+							f=1;
+						}
 					}
 				}
 				if (f == 0) {
@@ -322,7 +324,7 @@ public class Estructura extends Base {
 			break;
 			//<----------------------------------------------------------->
 		case 3:
-			Thread.sleep(1000);
+
 			click(ED);
 			Thread.sleep(1000);
 			do {
@@ -340,9 +342,11 @@ public class Estructura extends Base {
 					Thread.sleep(1000);
 					click(guardar);
 					Thread.sleep(2000);
-					click(ok);
-					System.out.println("se actualizo correctamente la estructura departamento");
-					f=1;
+					if(getText(check).equals("Estructura Departamento agregada correctamente")) {
+						click(ok);
+						Thread.sleep(2000);
+						f=1;
+					}
 				}
 			}
 			if (f == 0) {
@@ -352,12 +356,11 @@ public class Estructura extends Base {
 			break;
 			//<--------------------------------------------------------->
 		case 4:
-			Thread.sleep(1000);
+			
 			click(Epos);
 			Thread.sleep(1000);
-			if(isdisplayed(By.xpath("//section/div/div/div[1]/h3"))) {
-				hg = getText(By.xpath("//section/div/div/div[1]/h3"));
-				if(hg.equals("EDITAR ESTRUCTURA POSICION")) {
+			
+			
 					do {
 						lista = driver.findElements(By.xpath("//tbody/tr"));
 						for (int i = 1; i < lista.size()+1; i++) {
@@ -367,23 +370,31 @@ public class Estructura extends Base {
 								Thread.sleep(1000);
 								driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[8]/button")).click();
 								Thread.sleep(2000);
-								limpiar(nombre);
-								Thread.sleep(1000);
-								type("gggg", nombre);
-								Thread.sleep(1000);
-								click(guardar);
-								Thread.sleep(2000);
-								click(ok);
-								System.out.println("se actualizo correctamente la estructura de posicions");
-								f=1;
+								hg = getText(By.xpath("//section/div/div/div[1]/h3"));
+								if(hg.equals("EDITAR ESTRUCTURA POSICION")) {
+									Thread.sleep(1000);
+									limpiar(nombre);
+									Thread.sleep(1000);
+									type("gggg", nombre);
+									Thread.sleep(1000);
+									click(guardar);
+									Thread.sleep(2000);
+									
+								}
+								
+								if(getText(check).equals("Estructura Posicion agregada correctamente")) {
+									click(ok);
+									Thread.sleep(2000);
+									f=1;
+								}
 							}
-						}
+						
 						if (f == 0) {
 							driver.findElement(By.linkText("Siguiente")).click();
-						}
+						}}
 					}while(f!=1);
-				}
-			}
+				
+			
 			
 			break;
 			//<--------------------------------------------------------->
@@ -407,9 +418,12 @@ public class Estructura extends Base {
 				Thread.sleep(1000);
 				click(guardar);
 				Thread.sleep(2000);
-				click(ok);
-				System.out.println("se actualizo correctamente la estructura de asignacion");
-				f=1;
+				if(getText(check).equals("Estructura Asignacion agregada correctamente")) {
+					click(ok);
+					Thread.sleep(2000);
+					//System.out.println(getText(check));
+					f=1;
+				}
 			}
 		}
 		if (f == 0) {
@@ -419,6 +433,7 @@ public class Estructura extends Base {
 			break;
 		}}catch(Exception e) {
 	DefinirError.getException(ErrorLog(e), this.getClass().toString(), "Actualizar");
+	e.printStackTrace();
 		}
 		
 	}
@@ -427,6 +442,7 @@ public class Estructura extends Base {
 		try {
 		switch(h) {
 		case 5:
+			Thread.sleep(2000);
 			click(EG);
 			Thread.sleep(1000);
 			do {
@@ -438,9 +454,11 @@ public class Estructura extends Base {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
 					Thread.sleep(1000);
-					click(ok);
-					System.out.println("se elimino correctamente la estructura de grupo");
-					f=1;
+					if(getText(check).equals("Estructura Grupo eliminada correctamente")) {
+						click(ok);
+						Thread.sleep(2000);
+						f=1;
+					}
 				}
 			}
 			if (f == 0) {
@@ -449,6 +467,7 @@ public class Estructura extends Base {
 		}while(f!=1);
 			break;
 		case 4:
+			Thread.sleep(2000);
 			click(Ep);
 			Thread.sleep(1000);
 			do {
@@ -460,9 +479,11 @@ public class Estructura extends Base {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[6]/button")).click();
 					Thread.sleep(1000);
-					click(ok);
-					System.out.println("se elimino correctamente la estructura de puesto");
-					f=1;
+					if(getText(check).equals("Estructura Puesto eliminada correctamente")) {
+						click(ok);
+						Thread.sleep(2000);
+						f=1;
+					}
 				}
 			}
 			if (f == 0) {
@@ -471,6 +492,7 @@ public class Estructura extends Base {
 		}while(f!=1);
 			break;
 		case 3:
+			Thread.sleep(2000);
 			click(ED);
 			Thread.sleep(1000);
 			lista = driver.findElements(By.xpath("//tbody/tr"));
@@ -481,12 +503,16 @@ public class Estructura extends Base {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[5]/button")).click();
 					Thread.sleep(1000);
-					click(ok);
-					System.out.println("se elimino correctamente la estructura departamento");
+					if(getText(check).equals("Estructura Departamento eliminada correctamente")) {
+						click(ok);
+						Thread.sleep(2000);
+						f=1;
+					}
 				}
 			}
 			break;
 		case 2:
+			Thread.sleep(2000);
 			click(Epos);
 			Thread.sleep(1000);
 			lista = driver.findElements(By.xpath("//tbody/tr"));
@@ -497,12 +523,16 @@ public class Estructura extends Base {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[9]/button")).click();
 					Thread.sleep(1000);
-					click(ok);
-					System.out.println("se elimino correctamente la estructura de posicion");
+					if(getText(check).equals("Estructura Posicion eliminada correctamente")) {
+						click(ok);
+						Thread.sleep(2000);
+						f=1;
+					}
 				}
 			}
 			break;
 		case 1:
+			Thread.sleep(2000);
 			Thread.sleep(1000);
 			click(EA);
 			Thread.sleep(1000);
@@ -515,13 +545,16 @@ public class Estructura extends Base {
 					Thread.sleep(1000);
 					driver.findElement(By.xpath("//tbody/tr[" + i + "]/td[9]/button")).click();
 					Thread.sleep(1000);
-					click(ok);
-					System.out.println("se elimino correctamente la estructura de asignacion");
-				}
+					if(getText(check).equals("Estructura Asignacion eliminada correctamente")) {
+						click(ok);
+						Thread.sleep(2000);
+						f=1;
+					}				}
 			}
 			break;
 		}
 	}catch(Exception e) {
 		DefinirError.getException(ErrorLog(e), this.getClass().toString(), "IC");
+		e.printStackTrace();
 	}
 }}

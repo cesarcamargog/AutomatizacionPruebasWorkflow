@@ -8,5 +8,4 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ login.class,partner.class, grupos.class, Estructuras.class, Dependencia.class, roles.class,
 	campo.class,adjunto.class, tramite.class })
 public class completo {
-
 }
